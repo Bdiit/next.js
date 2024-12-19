@@ -60,6 +60,12 @@ impl ConnectChildOperation {
         }) {
             let mut queue = AggregationUpdateQueue::new();
 
+            if get!(parent_task, Activeness).is_some_and(|a| a.active_counter > 0) {
+                queue.push(AggregationUpdateJob::IncreaseActiveCount {
+                    task: child_task_id,
+                })
+            }
+
             // Update the children count
             let children_count = update_ucount_and_get!(parent_task, ChildrenCount, 1);
 
