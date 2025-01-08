@@ -4,6 +4,7 @@ mod connect_child;
 mod connect_children;
 mod invalidate;
 mod update_cell;
+mod update_children_aggregation;
 mod update_collectible;
 mod update_output;
 
@@ -746,5 +747,6 @@ pub use self::{
     connect_children::connect_children,
     invalidate::TaskDirtyCause,
     update_cell::UpdateCellOperation,
+    update_children_aggregation::update_children_aggregation,
     update_collectible::UpdateCollectibleOperation,
 };
